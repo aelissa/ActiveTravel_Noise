@@ -1,13 +1,11 @@
 library(sf)
 library(tidyverse)
 
-layers<-st_layers("SpatialData_Packaged.gpkg")
+layers<-st_layers("./input/SpatialData_Packaged.gpkg")
 layers<-layers[["name"]][c(1,3,5:12)]
 
-data<-st_read("SpatialData_Packaged.gpkg",layer = "Grid_500m_Join") %>%
+data<-st_read("./input/SpatialData_Packaged.gpkg",layer = "Grid_500m_Join") %>%
   select(id)
-
-
 
 for (l in layers){
   print(paste("Working on",l))
