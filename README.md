@@ -1,4 +1,4 @@
-# ActiveTravel_Noise
+# Active Travel & Noise Pollution
 
 ## An exploratory study on the association between noise pollution, urban forms and function, and the choice of transportation modes
 
