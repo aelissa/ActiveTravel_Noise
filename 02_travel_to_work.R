@@ -111,12 +111,16 @@ for(i in seq(1,n,50000)){
 }
 
 saveRDS(data.subset,"output/datasubset.rds")
-data.subset<-do.call("rbind",data.subset)
 
-car<-data.subset
+
+###Visualization
+
+car<-readRDS("output/datasubset.rds")
+car<-do.call("rbind",car)
 walk<-readRDS("output/walk_join.rds")
 bicycle<-readRDS("output/bicycle_join.rds")
 travel_data<-rbind(car,walk,bicycle)
+
 remove(car,walk,bicycle)
 
 grid_data<-st_read("output/data_processed.gpkg")
@@ -172,7 +176,7 @@ ggplot(avg_travel_noise,aes(x=Noise_Road,y=meanMp*100))+
   coord_flip() +
   facet_wrap(~mode,ncol=1)+
   theme_minimal() +
-  labs(x="Road Noise Class", y="Distance travelled (%)")+
+  labs(x="Road Noise Class (dB)", y="Distance travelled (%)")+
   theme(text = element_text(family="Times New Roman"))
 
 dev.off()
